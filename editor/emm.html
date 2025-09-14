@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en" data-supabase-url="{{SUPABASE_URL}}" data-supabase-anon="{{SUPABASE_ANON_KEY}}">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Editor — EMM</title>
+  <link rel="stylesheet" href="/assets/responsive.css"/>
+</head>
+<body>
+  <header style="display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 16px;border-bottom:1px solid #eee">
+    <strong>Editor</strong>
+    <nav style="display:flex;gap:8px">
+      <a href="/viewer/emm">Open Viewer</a>
+      <a href="/home.html">Home</a>
+    </nav>
+  </header>
+
+  <main style="max-width:900px;margin:24px auto;padding:0 16px">
+    <h1 style="margin:0 0 8px">EMM <small style="font-weight:normal;color:#666">(<span id="status">draft</span>)</small></h1>
+    <label style="display:block;font-weight:600;margin:12px 0 6px">Title</label>
+    <input id="title" placeholder="Title" style="width:100%;padding:12px;border:1px solid #ddd;border-radius:10px"/>
+
+    <label style="display:block;font-weight:600;margin:12px 0 6px">Body</label>
+    <textarea id="body" rows="12" style="width:100%;padding:12px;border:1px solid #ddd;border-radius:10px;font-family:ui-sans-serif,system-ui,Arial"></textarea>
+
+    <div style="display:flex;gap:10px;margin-top:14px">
+      <button id="btn-save">Save Draft</button>
+      <button id="btn-publish">Publish</button>
+    </div>
+  </main>
+
+  <script type="module" src="/assets/editor-guard.js"></script>
+  <script type="module" src="/assets/sb-client.js"></script>
+  <script type="module" src="/assets/content-api.js"></script>
+  <script type="module" src="/assets/editor-page.js"></script>
+</body>
+</html>
