@@ -1,0 +1,7 @@
+/* Global responsive defaults */
+img, video { max-width: 100%; height: auto; }
+:root { --touch: 44px; }
+a, button { min-width: var(--touch); min-height: var(--touch); }
+.cards { display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+.card { display:block; padding:16px; border:1px solid #e5e7eb; border-radius:14px; text-decoration:none; }
+.card:focus { outline: 3px solid #93c5fd; outline-offset: 2px; }
