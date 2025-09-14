@@ -581,5 +581,43 @@ if (navEmm) navEmm.setAttribute('href', emmHref);
 <script type="module" src="assets/auth.js"></script>
 
 
+
+<script type="module">
+  // window.__HOME_MODE_ROUTER__ prevents duplicate injection
+  window.__HOME_MODE_ROUTER__ = true;
+  function getMode(){
+    const sp = new URLSearchParams(location.search);
+    const m = (localStorage.getItem('mode') || sp.get('mode') || 'viewer').toLowerCase();
+    return (m === 'editor') ? 'editor' : 'viewer';
+  }
+  function hrefFor(slug){
+    const mode = getMode();
+    slug = String(slug||'').toLowerCase();
+    if (mode === 'editor') {
+      if (slug === 'new_project' || slug === 'new-project') return '/editor/new_project';
+      return '/editor/' + slug;
+    } else {
+      return '/viewer/' + slug;
+    }
+  }
+  // Apply to anchors with data-slug, or elements with .card and data-slug
+  document.querySelectorAll('[data-slug]').forEach(el => {
+    const slug = el.getAttribute('data-slug');
+    const href = hrefFor(slug);
+    if (el.tagName === 'A') {
+      el.setAttribute('href', href);
+      el.removeAttribute('onclick');
+    } else {
+      el.style.cursor = 'pointer';
+      el.addEventListener('click', () => location.href = href, { passive: true });
+    }
+  });
+  // Toggle editor-only visibility
+  const isEditor = getMode()==='editor';
+  document.querySelectorAll('[data-editor-only]').forEach(el => {
+    el.style.display = isEditor ? '' : 'none';
+  });
+</script>
+
 </body>
 </html>
