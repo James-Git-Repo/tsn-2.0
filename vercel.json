@@ -1,4 +1,13 @@
 {
   "cleanUrls": true,
-  "trailingSlash": false
+  "trailingSlash": false,
+  "rewrites": [
+    { "source": "/viewer/emm", "destination": "/emm.html" },
+    { "source": "/viewer/msab", "destination": "/msab.html" },
+    { "source": "/viewer", "destination": "/home.html" },
+
+    { "source": "/editor/emm", "destination": "/editor/emm.html" },
+    { "source": "/editor/msab", "destination": "/editor/msab.html" },
+    { "source": "/editor/new_project", "destination": "/editor/new_project.html" }
+  ]
 }
